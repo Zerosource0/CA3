@@ -1,6 +1,7 @@
 package facades;
 
 import deploy.DeploymentConfiguration;
+import entity.Role;
 import entity.User;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -18,6 +19,49 @@ public class UserFacade {
 
   public UserFacade() {
    
+  }
+  
+  public Boolean newUser (String userName, String password, String roleName )
+  {
+      EntityManager em = emf.createEntityManager();
+      
+      try 
+      {
+      User user =  em.find(User.class, userName);
+          
+        if(user != null)
+        {
+            return false;
+        }
+        else
+        {
+            System.out.println("I'm here");
+            String pass;
+            User newUser = new User(userName, PasswordHash.createHash(password));
+            try
+            {
+            newUser.AddRole(em.find(Role.class, roleName));
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            
+            
+            em.getTransaction().begin();
+            em.persist(newUser);
+            
+            em.getTransaction().commit();
+            em.close();
+            
+        }
+      }
+      catch (Exception e)
+      {
+        return false;      
+      }
+      
+      return true ;
   }
 
   public User getUserByUserId(String id) {
