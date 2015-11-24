@@ -8,7 +8,7 @@ angular.module('myApp', [
   'myApp.security',
   'myApp.homeView',
   'myApp.documentationView',
-  'myApp.exchangeRateInfo',
+  'myApp.exchangeRateApp',
   'myApp.allUsers',
   'myApp.view5',
   'myApp.filters',

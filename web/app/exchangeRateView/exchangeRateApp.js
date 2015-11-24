@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('myApp.exchangeRateInfo', ['ngRoute'])
+angular.module('myApp.exchangeRateApp', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
+
   $routeProvider.when('/exchangeRateInfo', {
-    templateUrl: 'app/exchangeRateInfo/ExchangeRateView.html'
+    templateUrl: 'app/exchangeRateView/exchangeRateView.html'
   });
 }]);
