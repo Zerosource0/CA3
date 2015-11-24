@@ -1,15 +1,16 @@
 'use strict';
 
-angular.module('myApp.view2', ['ngRoute'])
+angular.module('myApp.documentationView', ['ngRoute'])
 
         .config(['$routeProvider', function ($routeProvider) {
-            $routeProvider.when('/view2', {
-              templateUrl: 'app/view2/view2.html',
-              controller: 'View2Ctrl'
+            $routeProvider.when('/documentationView', {
+              templateUrl: 'app/documentationView/documentationView.html',
+              controller: 'documentationViewCtrl',
+              controllerAs: 'ctrl'
             });
-          }])
+          }]);
 
-        .controller('View2Ctrl', function ($http, $scope) {
+        /*.controller('documentationViewCtrl', function ($http, $scope) {
           $http({
             method: 'GET',
             url: 'api/demouser'
@@ -19,4 +20,4 @@ angular.module('myApp.view2', ['ngRoute'])
             $scope.error = res.status + ": "+ res.data.statusText;
           });
 
-        });
+        });*/
