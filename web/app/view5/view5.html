@@ -1,9 +1,14 @@
 <form>
     Username<br>
-    <input type="text"><br>
+    <input type="text" ng-model="newUser.username"><br>
     Password<br>
-    <input type="text">
+    <input type="text" ng-model="newUser.password">
     <br>
+    Role<br>
+    <select>
+        <option value="Admin" ng-model="newUser.role">Admin</option>
+        <option value="User" ng-model="newUser.role">User</option>
+   </select>
     
     <input type="submit" value="Submit">
 </form>
