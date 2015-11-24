@@ -5,11 +5,13 @@
  */
 package rest;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.nimbusds.jose.JOSEException;
 import facades.UserFacade;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.POST;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -38,7 +40,7 @@ public class NewUserResource {
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public void newUser(String jsonString) throws JOSEException 
+  public Response newUser(String jsonString) throws JOSEException 
   {
     JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
     String username =  json.get("username").getAsString(); 
@@ -47,7 +49,10 @@ public class NewUserResource {
     JsonObject responseJson = new JsonObject();
     UserFacade uf = new UserFacade();
     uf.newUser(username, password, role);
-
     
+    if(uf.newUser(username, password, role)){
+      return Response.ok(new Gson().toJson(responseJson)).build();
+    }  
+    throw new NotAuthorizedException("Ilegal username or select a role",Response.Status.UNAUTHORIZED);
   }
 }

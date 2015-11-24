@@ -5,12 +5,14 @@
     <input type="text" ng-model="newUser.password">
     <br>
     Role<br>
-    <select>
-        <option value="Admin" ng-model="newUser.role">Admin</option>
-        <option value="User" ng-model="newUser.role">User</option>
+    <select ng-model="newUser.role">
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
    </select>
     
-    <input type="submit" value="Submit">
+    <button value="submitNewUser" ng-click="submitNewUser()">Add User</button>
+    <br>
+    {{success}}
 </form>
     
     
