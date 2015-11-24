@@ -8,6 +8,7 @@ angular.module('myApp', [
   'myApp.security',
   'myApp.homeView',
   'myApp.documentationView',
+  'myApp.companyInfoView',
   'myApp.exchangeRateApp',
   'myApp.allUsers',
   'myApp.view5',
