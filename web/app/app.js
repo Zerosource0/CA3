@@ -6,10 +6,10 @@ angular.module('myApp', [
   'ngAnimate',
   'ui.bootstrap',
   'myApp.security',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.view3',
-  'myApp.view4',
+  'myApp.homeView',
+  'myApp.documentationView',
+  'myApp.exchangeRateInfo',
+  'myApp.allUsers',
   'myApp.view5',
   'myApp.filters',
   'myApp.directives',
@@ -17,7 +17,7 @@ angular.module('myApp', [
   'myApp.services'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/homeView'});
 }]).
 config(function ($httpProvider) {
    $httpProvider.interceptors.push('authInterceptor');
