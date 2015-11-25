@@ -11,7 +11,7 @@ angular.module('myApp', [
   'myApp.companyInfoView',
   'myApp.exchangeRateApp',
   'myApp.allUsers',
-  'myApp.view5',
+  'myApp.newUserView',
   'myApp.filters',
   'myApp.directives',
   'myApp.factories',
