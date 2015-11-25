@@ -13,6 +13,7 @@ angular.module('myApp.companyInfoView', ['ngRoute', 'myApp.security'])
         .controller('companyInfoViewCtrl',['$http', '$scope', function ($http, $scope) {
             
             $scope.searchInput;
+            $scope.searchClicked = false;
             
           $http({
             method: 'GET',
@@ -30,6 +31,7 @@ angular.module('myApp.companyInfoView', ['ngRoute', 'myApp.security'])
                   .success(function(data){
                       $scope.result = data;
                       $scope.companyList = data.productionunits;
+                      $scope.searchClicked = true;
                      // DisableAuthInterceptor.enableLoader = true;
                   })
                   .error(function(data, status){
@@ -39,5 +41,7 @@ angular.module('myApp.companyInfoView', ['ngRoute', 'myApp.security'])
                       console.log(status);
                      // DisableAuthInterceptor.enableLoader = true;
                   });
+  
+                  
           };
         }]);
