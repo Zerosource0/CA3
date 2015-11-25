@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.view5', ['ngRoute'])
+angular.module('myApp.newUserView', ['ngRoute'])
 
         .config(['$routeProvider', function ($routeProvider) {
                 $routeProvider.when('/newUserView', {

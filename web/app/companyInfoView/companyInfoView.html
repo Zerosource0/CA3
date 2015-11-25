@@ -3,5 +3,26 @@
     
         <div>
         <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+        <form role="form">
+            <label>Search</label>
+            <input type="text" ng-model="searchInput.search">
+            <br>
+            <label>Country</label>
+            <select ng-model="searchInput.country">
+                <option value="dk">DK</option>
+                <option value="no">NO</option>
+            </select>
+            <br>
+            <button ng-click="submitSearch()">Search</button>
+        </form>
+        <br>
+        <p><strong>CVR-number:</strong> {{result.vat}}</p>
+        <p><strong>Name:</strong>  {{result.name}}</p>
+        <p><strong>Address: </strong> {{result.address}}</p>
+        <p><strong>Zip Code: </strong> {{result.zipcode}}</p>
+        <p><strong>City: </strong> {{result.city}}</p>
+        <p><strong>Phone: </strong> {{result.phone}}</p>
+        <p><strong>Email: </strong> {{result.email}}</p>
+        <p><strong>Industry: </strong> {{result.industrydesc}}</p>
     </div>
 </div>
