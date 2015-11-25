@@ -28,7 +28,7 @@ angular.module('myApp.security', [])
     return viewLocation === $location.path();
   };
 
-
+  $scope.title = "Gypsy Lewandoski";
   $scope.username = "";
   $scope.isAuthenticated = false;
   $scope.isAdmin = false;
