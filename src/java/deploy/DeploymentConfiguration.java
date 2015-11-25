@@ -1,8 +1,9 @@
 package deploy;
 
+import entity.Currdesc;
+import entity.Currvalues;
 import entity.Role;
 import entity.User;
-import facades.UserFacade;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Map;
@@ -15,7 +16,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.ws.rs.core.Context;
 import security.PasswordHash;
 
 @WebListener
@@ -43,7 +43,12 @@ public class DeploymentConfiguration implements ServletContextListener {
       }
       Role userRole = new Role("User");
       Role adminRole = new Role("Admin");
-
+      
+      
+      
+      
+      
+      
       User user = new User("user", PasswordHash.createHash("test"));
       User admin = new User("admin", PasswordHash.createHash("test"));
       User both = new User("user_admin", PasswordHash.createHash("test"));
@@ -51,23 +56,60 @@ public class DeploymentConfiguration implements ServletContextListener {
       admin.AddRole(adminRole);
       both.AddRole(userRole);
       both.AddRole(adminRole);
+      
+        persistDanishBank(em);
 
       try {
         em.getTransaction().begin();
         em.persist(userRole);
         em.persist(adminRole);
+        
+        
 
         em.persist(user);
         em.persist(admin);
         em.persist(both);
         em.getTransaction().commit();
       } finally {
+          persistDanishBank(em);
         em.close();
       }
-    } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) {
+    } catch (NoSuchAlgorithmException | InvalidKeySpecException ex) 
+    {
       Logger.getLogger(DeploymentConfiguration.class.getName()).log(Level.SEVERE, null, ex);
     }
+    
+    
 
+  }
+  
+  private void persistDanishBank (EntityManager em)
+  {
+    Currdesc currdesc;
+    Currvalues currvalue;
+    BankXmlReader bxr = new BankXmlReader();
+    String[][] resultSet = bxr.getResults();
+    
+    try
+    {
+        for (int i=0;i<resultSet.length;i++)
+        {
+            currdesc = new Currdesc(resultSet[i][bxr.indexOfcode()],resultSet[i][bxr.indexOfdesc()]);
+            currvalue= new Currvalues(resultSet[i][bxr.indexOfdate()], Float.parseFloat(resultSet[i][bxr.indexOfvalue()]), currdesc);
+            em.getTransaction().begin();
+            
+            em.persist(currdesc);
+            em.persist(currvalue);
+            em.getTransaction().commit();
+            
+            
+        }
+    }
+    catch (Exception e)
+    {
+        //      Currdesc currdesc = new Currdesc("PLN", "Polska waluta");
+//      Currvalues currvalue = new Currvalues("24-05-1995", (56.34), currdesc);
+    }
   }
 
   @Override
