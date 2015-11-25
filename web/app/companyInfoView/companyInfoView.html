@@ -2,7 +2,11 @@
     <h2>Company Info</h2>
     
         <div>
+<<<<<<< Updated upstream
         <form class="form-group" role="form">
+=======
+        <form role="form">
+>>>>>>> Stashed changes
             <label>Search</label>
             <input type="text" class="form-control" ng-model="searchInput.search">
             <br>
@@ -23,5 +27,30 @@
         <p><strong>Phone: </strong> {{result.phone}}</p>
         <p><strong>Email: </strong> {{result.email}}</p>
         <p><strong>Industry: </strong> {{result.industrydesc}}</p>
+        
+        <div>
+        <uib-accordion>
+            <uib-accordion-group ng-repeat="n in companyList">
+                <uib-accordion-heading>{{n.name}}</uib-accordion-heading>
+                <ul>
+                    <li>
+                        Address: {{n.address}}
+                    </li>
+                    <li>
+                        City: {{n.city}}
+                    </li>
+                    <li>
+                        Zip code: {{n.zipcode}}
+                    </li>
+                    <li>
+                        Email: {{n.email}}
+                    </li>
+                    <li>
+                        Phone: {{n.phone}}
+                    </li>
+                </ul>
+            </uib-accordion-group>
+        </uib-accordion>
+        </div>
     </div>
 </div>
