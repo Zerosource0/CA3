@@ -64,6 +64,24 @@ public class UserFacade {
       return true ;
   }
 
+  public User deleteUser(String userName){
+      EntityManager em = emf.createEntityManager();
+      User user = em.find(User.class, userName);
+      try {
+        em.getTransaction().begin();
+        em.remove(user);
+        em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+      return user;      
+  }
+  
+  public List<User> getUsers(){
+      EntityManager em = emf.createEntityManager();
+      return em.createQuery("Select s from User s").getResultList();
+  }
+  
   public User getUserByUserId(String id) {
     EntityManager em = emf.createEntityManager();
     try {
