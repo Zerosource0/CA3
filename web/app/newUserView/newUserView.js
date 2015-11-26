@@ -11,8 +11,6 @@ angular.module('myApp.newUserView', ['ngRoute'])
 
         .controller('AppNewUserCtrl', ['$http', '$scope', function ($http, $scope)
             {
-                $scope.name = "adam";
-
                 $scope.submitNewUser = function()
                 {
                     $http.post('api/newuser', {username: $scope.newUser.username, 
