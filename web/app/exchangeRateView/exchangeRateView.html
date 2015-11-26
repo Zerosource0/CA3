@@ -1,6 +1,24 @@
 <div class="container">
     <h2>Exchange-rates</h2>
-    
-        <div>
+    <div>
+        <div class="col-md-9">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Currency Code</th>
+                        <th>Description</th>
+                        <th>Rate</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="rate in rates">
+                        <td>{{rate.code}}</td>
+                        <td>{{rate.desc}}</td>
+                        <td>{{rate.rate |number:4}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

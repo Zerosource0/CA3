@@ -19,4 +19,12 @@ angular.module('myApp.exchangeRateApp', ['ngRoute'])
             $scope.error = res.status + ": "+ res.data.statusText;
           });
 
+          $http.get('api/dailyrates')
+                    .success(function (data, status, headers, config) {
+                        $scope.rates = data;
+                    })
+                    .error(function (data, status, headers, config) {
+                        console.log(status + " " + headers + " " + data);
+                    });
+
         });
