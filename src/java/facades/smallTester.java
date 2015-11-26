@@ -21,7 +21,7 @@ public class smallTester {
 //        cf.getComplete();
 //        
         Gson gson = new Gson();
-        CurrencyFacade cf = new CurrencyFacade();
-        System.out.println(gson.toJson(cf.getComplete()));
+        //CurrencyFacade cf = new CurrencyFacade();
+        //System.out.println(gson.toJson(cf.getComplete()));
     }
 }
