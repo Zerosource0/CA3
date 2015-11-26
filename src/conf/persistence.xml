@@ -27,4 +27,15 @@
       <property name="eclipselink.canonicalmodel.subpackage" value="deploy"/>
     </properties>
   </persistence-unit>
+  <persistence-unit name="Test_PU" transaction-type="JTA">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <jta-data-source>test</jta-data-source>
+    <class>entity.Currdesc</class>
+    <class>entity.Currvalues</class>
+    <class>entity.Role</class>
+    <class>entity.User</class>
+    <properties>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+    </properties>
+  </persistence-unit>
 </persistence>
