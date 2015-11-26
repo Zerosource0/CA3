@@ -1,5 +1,24 @@
-<h3>This is the partial for view 3.</h3>
-<div>
-  <p>Data from server (Admins only) <b style="color: darkblue">{{data.message}}</b></p>
-  <p>Server Time: <b style="color: darkblue">{{data.serverTime}}</b></p>
+<div class="container">
+    <h2>All Users</h2>
+    <div>
+        <div class="col-md-9">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="user in users">
+                        <td>{{user.userName}}</td>
+                        <td>
+                            <a href="#" ng-click="delete(user.userName)">delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
