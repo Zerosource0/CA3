@@ -15,14 +15,7 @@ angular.module('myApp.companyInfoView', ['ngRoute', 'myApp.security'])
             $scope.searchInput;
             $scope.searchClicked = false;
             
-          $http({
-            method: 'GET',
-            url: 'api/demouser'
-          }).then(function successCallback(res) {
-            $scope.data = res.data.message;
-          }, function errorCallback(res) {
-            $scope.error = res.status + ": "+ res.data.statusText;
-          });
+          
           
           $scope.submitSearch = function(){
              //DisableAuthInterceptor.enableLoader = false;
