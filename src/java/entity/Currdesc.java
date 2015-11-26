@@ -112,7 +112,7 @@ public class Currdesc implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Currdesc[ code=" + code + " ] "+ "description:" +description;
+        return "entity.Currdesc[ code=" + code + " ]";
     }
     
 }

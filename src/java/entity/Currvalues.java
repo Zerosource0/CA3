@@ -32,8 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Currvalues.findAll", query = "SELECT c FROM Currvalues c"),
     @NamedQuery(name = "Currvalues.findByCurr", query = "SELECT c FROM Currvalues c WHERE c.curr = :curr"),
-    @NamedQuery(name = "Currvalues.findById", query = "SELECT c FROM Currvalues c WHERE c.id = :id"),
-    @NamedQuery(name="Currvalues.findDesc", query = "SELECT cd.description FROM Currdesc cd, Currvalues cv WHERE cd.code=:code")})
+    @NamedQuery(name = "Currvalues.findById", query = "SELECT c FROM Currvalues c WHERE c.id = :id")})
 public class Currvalues implements Serializable {
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -121,9 +120,7 @@ public class Currvalues implements Serializable {
 
     @Override
     public String toString() {
-        return "Currvalues{" + "date=" + date + ", curr=" + curr + ", code=" + code + '}';
+        return "entity.Currvalues[ id=" + id + " ]";
     }
-
-    
     
 }

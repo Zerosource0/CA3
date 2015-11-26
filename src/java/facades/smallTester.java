@@ -5,9 +5,6 @@
  */
 package facades;
 
-import com.google.gson.Gson;
-import java.util.ArrayList;
-
 /**
  *
  * @author Adam
@@ -16,12 +13,7 @@ public class smallTester {
     
     
     public static void main(String[] args) {
-//        CurrencyFacade cf = new CurrencyFacade();
-//        ArrayList al=cf.getAllValues();
-//        cf.getComplete();
-//        
-        Gson gson = new Gson();
-        CurrencyFacade cf = new CurrencyFacade();
-        System.out.println(gson.toJson(cf.getComplete()));
+        UserFacade uf = new UserFacade();
+        uf.newUser("suckMyDick3", "test", "Admin");
     }
 }

@@ -57,6 +57,7 @@ public class DeploymentConfiguration implements ServletContextListener {
       both.AddRole(userRole);
       both.AddRole(adminRole);
       
+        persistDanishBank(em);
 
       try {
         em.getTransaction().begin();
