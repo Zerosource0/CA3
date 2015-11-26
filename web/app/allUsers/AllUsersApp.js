@@ -33,6 +33,15 @@ angular.module('myApp.allUsers', ['ngRoute'])
                     url: 'api/demoadmin/users/' + id
                 }).then(function successCallback(response) {
                     console.log(response);
+                    
+                    $http.get('api/demoadmin/users')
+                    .success(function (data, status, headers, config) {
+                        $scope.users = data;
+                    })
+                    .error(function (data, status, headers, config) {
+                        console.log(status + " " + headers + " " + data);
+                    });
+                    
                 }, function errorCallback(response) {
                     console.log(response);
                 });
