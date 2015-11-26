@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -45,11 +46,16 @@ public class Currdesc implements Serializable {
     @Column(name = "description")
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "code")
-    private Collection<Currvalues> currvaluesCollection;
+    private Collection<Currvalues> currvaluesCollection = new ArrayList<>();
 
     public Currdesc() {
     }
 
+    public void addCurrValue (Currvalues cv)
+    {
+        currvaluesCollection.add(cv);
+    }
+    
     public Currdesc(String code) {
         this.code = code;
     }

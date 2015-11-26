@@ -66,8 +66,8 @@ public class BankXmlReader extends DefaultHandler {
   }
   public void showResults (String[][] result)
   {
-      for (int j=0;j<result.length;j++) System.out.println(" "+result[j][0] +"  "+ result[j][1]+ "  "+result[j][2]+"  "+result[j][3]);
-      
+      //for (int j=0;j<result.length;j++) System.out.println(" "+result[j][0] +"  "+ result[j][1]+ "  "+result[j][2]+"  "+result[j][3]);
+     // System.out.println(result.length);
   }
   
     
