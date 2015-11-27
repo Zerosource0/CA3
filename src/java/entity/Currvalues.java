@@ -58,8 +58,6 @@ public class Currvalues implements Serializable {
     public Currvalues() {
     }
 
-    
-
     public Currvalues( String date, double curr, Currdesc code) {
        
         this.date = date;

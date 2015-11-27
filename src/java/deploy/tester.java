@@ -21,7 +21,7 @@ public class tester {
     
     
     public static void main(String[] args) {
-        EntityManager em= emf.createEntityManager();
+        EntityManager em = emf.createEntityManager();
         BankXmlReader xrd = new BankXmlReader();
         String[][] sth=xrd.getResults();
         xrd.showResults(sth);
@@ -59,7 +59,7 @@ public class tester {
             
             
             
-           // System.out.println(i+" "+currdesc.getCode());
+           System.out.println(i+" "+currdesc.getCode());
         }
         em.getTransaction().commit();
     }

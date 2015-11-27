@@ -20,5 +20,34 @@
                 </tbody>
             </table>
         </div>
+        
+        <div class="col-md-3" style="border: thin lightblue solid; border-radius: 5px;padding: 1em;">
+            <h3>Convert Currencies</h3>
+            <form class="form-group">
+                
+                <label >From</label>
+                <select class="form-control" ng-model="fromCurrency" ng-change="convert()">
+                    <option ng-repeat="rate in rates" value="{{rate.code}}">{{rate.code}}</option>
+                </select>
+                
+                <br>            
+                <p class="text-center">
+                    <a  href="" ng-click="convertSwitch()">
+                   <span class="glyphicon glyphicon-sort"></span>
+                 </a>
+                </p>
+                
+                <label>To</label>
+                <select class="form-control" ng-model="toCurrency" ng-change="convert()">
+                    <option ng-repeat="rate in rates" value="{{rate.code}}">{{rate.code}}</option>
+                </select>
+                <br>
+                <label>Amount</label>  
+                <input class="form-control" type="number" ng-model="amount" ng-change="convert()"/>
+                <br>
+                <label>{{result |number:2}} {{toCurrency}}</label>
+            </form>
+            
+        </div>
     </div>
 </div>
