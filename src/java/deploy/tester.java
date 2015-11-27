@@ -25,7 +25,7 @@ public class tester {
         BankXmlReader xrd = new BankXmlReader();
         String[][] sth=xrd.getResults();
         xrd.showResults(sth);
-        persistDanishBank(em);
+       // persistDanishBank(em);
         
     }
     private static void persistDanishBank (EntityManager em)

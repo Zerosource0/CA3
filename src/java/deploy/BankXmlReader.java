@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 public class BankXmlReader extends DefaultHandler {
   private static  HashMap<String,String> codes =new HashMap<>();
-  private static  ArrayList<String> values =new ArrayList<>();
+  private static  HashMap<String,String> values =new HashMap<>();
   private static String[][] result;
   private String code="";
   private String desc="";
@@ -27,7 +27,11 @@ public class BankXmlReader extends DefaultHandler {
       switch (attributes.getLocalName(i))
       {
           
-          case "code": code=attributes.getValue(i);
+          case "code": 
+          {
+              code=attributes.getValue(i);
+              //System.out.println(code);
+          }
               break;
           case "desc":
           {
@@ -35,8 +39,8 @@ public class BankXmlReader extends DefaultHandler {
                 if (!code.isEmpty()) 
                 {
                     codes.put(code, desc);
-                    code="";
-                    desc="";
+                  //  code="";
+                   // desc="";
                 }
           }
               break;
@@ -44,7 +48,9 @@ public class BankXmlReader extends DefaultHandler {
           {
               try
               {
-              values.add(attributes.getValue(i));
+                  
+                  values.put(code,attributes.getValue(i));
+                  System.out.println(code+" sth");
               }
               catch (Exception e)
               {
@@ -66,8 +72,8 @@ public class BankXmlReader extends DefaultHandler {
   }
   public void showResults (String[][] result)
   {
-      //for (int j=0;j<result.length;j++) System.out.println(" "+result[j][0] +"  "+ result[j][1]+ "  "+result[j][2]+"  "+result[j][3]);
-     // System.out.println(result.length);
+      for (int j=0;j<result.length;j++) System.out.println(" "+result[j][0] +"  "+ result[j][1]+ "  "+result[j][2]+"  "+result[j][3]);
+      System.out.println(result.length);
   }
   
     
@@ -88,7 +94,7 @@ public class BankXmlReader extends DefaultHandler {
                    
                     result[j][0] = entry.getKey();
                     result[j][1] = entry.getValue();
-                    result[j][2] = values.get(j);
+                    result[j][2] = values.get(result[j][0]);
                     result[j][3] = date;
                     
                     j++;
