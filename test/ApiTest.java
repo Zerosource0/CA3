@@ -2,6 +2,7 @@
 
 import com.jayway.restassured.RestAssured;
 import static com.jayway.restassured.RestAssured.*;
+import com.jayway.restassured.authentication.FormAuthConfig;
 import static com.jayway.restassured.authentication.FormAuthConfig.formAuthConfig;
 import com.jayway.restassured.filter.session.SessionFilter;
 import com.jayway.restassured.http.ContentType;
@@ -38,6 +39,9 @@ public class ApiTest {
                 ;
     }
     
+    public static FormAuthConfig security(String formAction, String username, String password){
+        
+    }
     
     @Test
     public void logInTest_200(){
