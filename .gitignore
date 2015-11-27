@@ -51,6 +51,3 @@ src/conf/persistence.xml
 src/conf/persistence.xml
 nbproject/build-impl.xml
 nbproject/project.xml
-*.xml
-nbproject/project.properties
-*.xml
