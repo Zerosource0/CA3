@@ -2,8 +2,10 @@
 
 import com.jayway.restassured.RestAssured;
 import static com.jayway.restassured.RestAssured.*;
+import static com.jayway.restassured.authentication.FormAuthConfig.formAuthConfig;
+import com.jayway.restassured.filter.session.SessionFilter;
+import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.parsing.Parser;
-import static javax.swing.UIManager.get;
 import javax.ws.rs.core.MediaType;
 import static org.hamcrest.Matchers.equalTo;
 import org.junit.Test;
@@ -15,6 +17,7 @@ import org.junit.BeforeClass;
  * @author williambech
  */
 public class ApiTest {
+    SessionFilter sf = new SessionFilter();
     
     @BeforeClass
     public static void setUpBeforeClass(){
@@ -24,7 +27,7 @@ public class ApiTest {
     }
     
     @Test
-    public void getUsersTest(){
+    public void getUsersTest_401(){
         final String uri ="demoadmin/users";
                given().
                 contentType(MediaType.APPLICATION_JSON).
@@ -35,8 +38,19 @@ public class ApiTest {
                 ;
     }
     
+    
+    @Test
+    public void logInTest_200(){
+        given().
+                auth().form("user", "test").filter(sf).
+        when().
+                get("/index").
+        then().
+                statusCode(200);
+        
+    }
       @Test
-    public void getUsersLoggedInTest(){
+    public void getUsersLoggedInTest_200(){
         final String uri ="demoadmin/users";
                given().
                 contentType(MediaType.APPLICATION_JSON).
