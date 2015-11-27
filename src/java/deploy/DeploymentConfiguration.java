@@ -45,10 +45,7 @@ public class DeploymentConfiguration implements ServletContextListener {
       Role adminRole = new Role("Admin");
       
       persistDanishBank(em);
-      
-      
-      
-      
+
       User user = new User("user", PasswordHash.createHash("test"));
       User admin = new User("admin", PasswordHash.createHash("test"));
       User both = new User("user_admin", PasswordHash.createHash("test"));
