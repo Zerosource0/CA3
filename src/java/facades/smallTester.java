@@ -24,6 +24,6 @@ public class smallTester {
         //CurrencyFacade cf = new CurrencyFacade();
         //System.out.println(gson.toJson(cf.getComplete()));
         UserFacade uf = new UserFacade();
-        uf.newUser("gypsy", "test", "admin");
+        uf.newUser("gypsyyyyy", "test", "admin");
     }
 }

@@ -53,15 +53,14 @@ public class UserFacade {
             
             em.getTransaction().commit();
             em.close();
-            
+            return true;
         }
       }
       catch (Exception e)
       {
         return false;      
       }
-      
-      return true ;
+
   }
 
   public User deleteUser(String userName){

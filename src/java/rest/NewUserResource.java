@@ -48,11 +48,14 @@ public class NewUserResource {
     String role = json.get("role").getAsString();
     JsonObject responseJson = new JsonObject();
     UserFacade uf = new UserFacade();
-    uf.newUser(username, password, role);
+    boolean addUser = uf.newUser(username, password, role);
     
-    if(uf.newUser(username, password, role)){
+    if(addUser){
+        System.out.println("good");
       return Response.ok(new Gson().toJson(responseJson)).build();
-    }  
-    throw new NotAuthorizedException("Ilegal username or select a role",Response.Status.UNAUTHORIZED);
+    } else{ 
+         System.out.println("bad");
+        throw new NotAuthorizedException("Ilegal username or select a role",Response.Status.UNAUTHORIZED);
+    }
   }
 }
