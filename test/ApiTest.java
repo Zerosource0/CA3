@@ -108,12 +108,34 @@ public class ApiTest {
                 then().
                 statusCode(200);
     }
+     @Test
+    public void getExchangeRateLogin_200(){
+                
+        String token = given().
+                contentType("application/json").
+                body("{\"username\":\"user\",\"password\":\"test\"}").
+                when().
+                post("/login").
+                then().
+                statusCode(200).
+                extract().
+                path("token");
+        
+           given().
+                log().all().
+                headers("Authorization", "Bearer "+token).
+                contentType(MediaType.APPLICATION_JSON).
+                when().
+                get("/currency/dailyrates").
+                then().
+                statusCode(200);
+    }
     @Test
     public void addNewUser_200(){
         
         given().
                 contentType("application/json").
-                body("{\"username\":\"newUserTestttttt\",\"password\":\"test\",\"role\":\"Admin\"}").
+                body("{\"username\":\"newUserTestttttttt\",\"password\":\"test\",\"role\":\"admin\"}").
                 when().post("/newuser").
                 then().statusCode(200);
                 
